@@ -8,7 +8,7 @@ namespace Microservice.Services.Catalog.Services.Category
 {
     public interface ICategoryService
     {
-        Task<Response<CategoryDto>> Create(CategoryEntity category);
+        Task<Response<CategoryDto>> Create(CategoryDto request);
         Task<Response<NoContent>> Update(CategoryDto request);
         Task<Response<NoContent>> Delete(string id);
         Task<Response<CategoryDto>> Get(string id);

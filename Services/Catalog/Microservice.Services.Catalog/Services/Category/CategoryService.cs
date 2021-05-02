@@ -21,8 +21,9 @@ namespace Microservice.Services.Catalog.Services.Category
             _mapper = mapper;
         }
 
-        public async Task<Response<CategoryDto>> Create(CategoryEntity category)
+        public async Task<Response<CategoryDto>> Create(CategoryDto request)
         {
+            var category = _mapper.Map<CategoryEntity>(request);
             await _categoryCollection.InsertOneAsync(category);
             return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 201);
         }
