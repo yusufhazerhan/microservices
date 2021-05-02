@@ -1,6 +1,6 @@
 ﻿namespace Microservice.Services.Catalog.Models
 {
-    public class Feature
+    public class FeatureEntity
     {
         public int Duration{ get; set; }
     }

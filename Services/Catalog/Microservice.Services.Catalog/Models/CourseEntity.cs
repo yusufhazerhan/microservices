@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Microservice.Services.Catalog.Models
 {
-    public class Course
+    public class CourseEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
