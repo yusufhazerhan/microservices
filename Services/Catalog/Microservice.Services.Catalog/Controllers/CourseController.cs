@@ -8,6 +8,7 @@ using Microservice.Services.Catalog.Dtos.Course;
 using Microservice.Services.Catalog.Services.Course;
 using Microservice.Shared.BaseController;
 using Microservice.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Microservice.Services.Catalog.Controllers
 {

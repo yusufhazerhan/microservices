@@ -9,6 +9,7 @@ using Microservice.Services.Catalog.Models;
 using Microservice.Services.Catalog.Services.Category;
 using Microservice.Shared.BaseController;
 using Microservice.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Microservice.Services.Catalog.Controllers
 {
