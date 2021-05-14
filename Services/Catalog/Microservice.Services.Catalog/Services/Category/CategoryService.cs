@@ -31,7 +31,7 @@ namespace Microservice.Services.Catalog.Services.Category
         {
             var category = _mapper.Map<CategoryEntity>(request);
             var result =await _categoryCollection.FindOneAndReplaceAsync(s => s.Id.Equals(category.Id), category);
-            return result == null ? Response<NoContent>.Fail("Category not found.", 404) : Response<NoContent>.Success(200);
+            return result == null ? Response<NoContent>.Fail("Category not found.", 404) : Response<NoContent>.Success(204);
         }
         public async Task<Response<NoContent>> Delete(string id)
         {
