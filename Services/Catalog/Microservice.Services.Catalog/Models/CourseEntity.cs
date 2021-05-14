@@ -20,9 +20,9 @@ namespace Microservice.Services.Catalog.Models
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId{ get; set; }
-        public Feature Feature{ get; set; }
+        public FeatureEntity Feature{ get; set; }
 
         [BsonIgnore]
-        public Category Category{ get; set; }
+        public CategoryEntity Category { get; set; }
     }
 }

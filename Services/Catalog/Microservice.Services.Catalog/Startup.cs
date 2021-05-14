@@ -1,5 +1,6 @@
 using Microservice.Services.Catalog.Services;
 using Microservice.Services.Catalog.Services.Category;
+using Microservice.Services.Catalog.Services.Course;
 using Microservice.Services.Catalog.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace Microservice.Services.Catalog
             services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICourseService, CourseService>();
 
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();

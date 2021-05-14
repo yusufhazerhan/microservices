@@ -75,6 +75,11 @@ namespace Microservice.Services.Catalog.Services.Course
         {
             var courses = await _courseCollection.Find(s => s.UserId.Equals(userId)).ToListAsync();
 
+            if (courses.Count <= 0)
+            {
+                return Response<List<CourseDto>>.Success(404);
+            }
+
             if (courses.Any())
             {
                 foreach (var course in courses)
