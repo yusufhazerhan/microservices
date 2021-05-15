@@ -11,6 +11,7 @@ using Microservice.Shared.BaseController;
 using Microservice.Shared.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.JsonWebTokens;
 using static IdentityServer4.IdentityServerConstants;
 
 namespace Microservice.IdentityServer.Controllers
@@ -44,6 +45,24 @@ namespace Microservice.IdentityServer.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("GetUser")]
+        public async Task<IActionResult> GetUser()
+        {
+            var userId = User.Claims.FirstOrDefault(s => s.Type.Equals(JwtRegisteredClaimNames.Sub));
+            if (userId == null)
+            {
+                return BadRequest();
+            }
+
+            var user = await _userManager.FindByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(new {Id = user.Id, Username = user.UserName, Email = user.Email, City = user.City});
         }
     }
 }
