@@ -240,7 +240,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgxQ0JERjBBOEY1QUYxMTU3NzY3NjMyRjNBQUNENjM0IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjEwMjk1MzksImV4cCI6MTYyMTAzMzEzOSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2NhdGFsb2ciLCJwaG90b19zdG9ja19jYXRhbG9nIiwiaHR0cDovL2xvY2FsaG9zdDo1MDAxL3Jlc291cmNlcyJdLCJjbGllbnRfaWQiOiJVaUNsaWVudCIsImp0aSI6IjZBMjlDMDA1NkY3NzIyOUUxRjhDMEE5OTBEMTUwRjcwIiwiaWF0IjoxNjIxMDI5NTM5LCJzY29wZSI6WyJjYXRhbG9nX2Z1bGwiLCJJZGVudGl0eVNlcnZlckFwaSIsInBob3RvU3RvY2tfZnVsbCJdfQ.3ZpXzI4HIvqD2TYVup7tQ3WawcXFcPaVdepJVZHxnxQB9E3azs-vRsgk-XIhHLb5lu1B-3myHrNpGVU3C0yXvog4eaDNH5HDzCiFF8sRmstJRqfRPERWzY2zUVMJGHpJ_uZLC0al3fmlreIW7fpiefVvnLRWRbxtraaBEFRZaxfX9BjJTjCC2Oax4mn3joiQR5fduyvlFzBcMvZ_DMJa4cEK0SNaFDGXx5opTN-aLVqppfvsRXXj9r6cwISDN5OrVu0xq22g-1gsA13Ti36KMFpdVTBc2spVPZtoL8NR9LJ8NVBs_0ZbqMVQ1KsHveMB05BxANROiZ3uND-aBUGpHg",
+											"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgxQ0JERjBBOEY1QUYxMTU3NzY3NjMyRjNBQUNENjM0IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjExOTIwNDcsImV4cCI6MTYyMTE5NTY0NywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2NhdGFsb2ciLCJyZXNvdXJjZV9waG90b19zdG9jayIsImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMS9yZXNvdXJjZXMiXSwiY2xpZW50X2lkIjoiVWlDbGllbnQiLCJqdGkiOiI2QjI4RkZBMTZDRTc5N0VGRDkxMUM3OTM4NUI1NjgyRiIsImlhdCI6MTYyMTE5MjA0Nywic2NvcGUiOlsiY2F0YWxvZ19mdWxsIiwiSWRlbnRpdHlTZXJ2ZXJBcGkiLCJwaG90b19mdWxsIl19.CXJKIvzARFUjZwc8gNKgr1bZuWwPDTZVM2rXh5OCo-4lfPvQysI6HlaqgwvEpMIKt-ejif2DL4zbTnN0WlCbZCFNJPx7gev1Qs28vPFUd1jaIuAvVj7tE9BKIeor9lcAACsLDc7wE5DQj-XLoEPCXpOdVjjI5VO9G_2EPgS8s17o2ZXQJS8sLJdrcFquKIYwK5WVzPZms1fdCNCs4w0JxuWWdqqg6EBMjvPE9wATYScgV-Ruhgp23tvqnBCidVF4DQlwQPvQnMIw2RyMVgU5qw9kRtWtJhCOJYxKpHWhehA5wp-Dcy9efqeLT6h_XG1V5SyXNO9OFPJh7AvuBkKjmA",
 											"type": "string"
 										}
 									]
@@ -627,6 +627,110 @@
 									"key": "url",
 									"value": "file.format"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BasketApi",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgxQ0JERjBBOEY1QUYxMTU3NzY3NjMyRjNBQUNENjM0IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjExOTEzMjUsImV4cCI6MTYyMTE5NDkyNSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2Jhc2tldCIsImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMS9yZXNvdXJjZXMiXSwiY2xpZW50X2lkIjoiVWlDbGllbnRfV0NsYWltcyIsInN1YiI6Ijk3ODNkZmI2LTZjNWItNGY0My04MGZhLTZkZTQ0MjhkMGVhYyIsImF1dGhfdGltZSI6MTYyMTE5MTMyNSwiaWRwIjoibG9jYWwiLCJqdGkiOiJBNjUyRTUyNUM5RjBCQUZGNDE3NkFCQjUzNDg5RkQzNCIsImlhdCI6MTYyMTE5MTMyNSwic2NvcGUiOlsiYmFza2V0X2Z1bGwiLCJlbWFpbCIsIklkZW50aXR5U2VydmVyQXBpIiwib3BlbmlkIiwicHJvZmlsZSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.x5v26s9EHaoFUeNV67KXlsS-wJY4vPIAn6wKHiubD9sOjZ1iQf9IzlNKysMAx0uIoK_QOeolKCHRbl7LudVJNy0WBE8rpGLZwBbPfUugQZrVKzwLAuhN7zuZkOmSdyLdReHYH2aD3YJCB6c-NwYw_bYe-k2X2hR4YNF-zy2yMu4KBL2g5XS1OkBHOzlqCud4XAOReIRJoQf-OtPYtY5Vqz8L3MsefGtkHE3R9Rw-WOXme78JpmKalib31RdGCxJ-mLcJv4YJd0WBZjlfn-RtqQh0cA-Hr1eUwX55hCozSjAByE3rga_mvkgf9MhN8YN1bA5UnSeS-fLKDTvvKZekTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5013/api/Basket",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5013",
+							"path": [
+								"api",
+								"Basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveOrUpdate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgxQ0JERjBBOEY1QUYxMTU3NzY3NjMyRjNBQUNENjM0IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjExOTEzMjUsImV4cCI6MTYyMTE5NDkyNSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2Jhc2tldCIsImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMS9yZXNvdXJjZXMiXSwiY2xpZW50X2lkIjoiVWlDbGllbnRfV0NsYWltcyIsInN1YiI6Ijk3ODNkZmI2LTZjNWItNGY0My04MGZhLTZkZTQ0MjhkMGVhYyIsImF1dGhfdGltZSI6MTYyMTE5MTMyNSwiaWRwIjoibG9jYWwiLCJqdGkiOiJBNjUyRTUyNUM5RjBCQUZGNDE3NkFCQjUzNDg5RkQzNCIsImlhdCI6MTYyMTE5MTMyNSwic2NvcGUiOlsiYmFza2V0X2Z1bGwiLCJlbWFpbCIsIklkZW50aXR5U2VydmVyQXBpIiwib3BlbmlkIiwicHJvZmlsZSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.x5v26s9EHaoFUeNV67KXlsS-wJY4vPIAn6wKHiubD9sOjZ1iQf9IzlNKysMAx0uIoK_QOeolKCHRbl7LudVJNy0WBE8rpGLZwBbPfUugQZrVKzwLAuhN7zuZkOmSdyLdReHYH2aD3YJCB6c-NwYw_bYe-k2X2hR4YNF-zy2yMu4KBL2g5XS1OkBHOzlqCud4XAOReIRJoQf-OtPYtY5Vqz8L3MsefGtkHE3R9Rw-WOXme78JpmKalib31RdGCxJ-mLcJv4YJd0WBZjlfn-RtqQh0cA-Hr1eUwX55hCozSjAByE3rga_mvkgf9MhN8YN1bA5UnSeS-fLKDTvvKZekTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"discountCode\": \"string\",\r\n  \"items\": [\r\n    {\r\n      \"courseId\": \"string\",\r\n      \"quantity\": 0,\r\n      \"courseName\": \"string\",\r\n      \"price\": 0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5013/api/Basket",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5013",
+							"path": [
+								"api",
+								"Basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgxQ0JERjBBOEY1QUYxMTU3NzY3NjMyRjNBQUNENjM0IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjExOTEzMjUsImV4cCI6MTYyMTE5NDkyNSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2Jhc2tldCIsImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMS9yZXNvdXJjZXMiXSwiY2xpZW50X2lkIjoiVWlDbGllbnRfV0NsYWltcyIsInN1YiI6Ijk3ODNkZmI2LTZjNWItNGY0My04MGZhLTZkZTQ0MjhkMGVhYyIsImF1dGhfdGltZSI6MTYyMTE5MTMyNSwiaWRwIjoibG9jYWwiLCJqdGkiOiJBNjUyRTUyNUM5RjBCQUZGNDE3NkFCQjUzNDg5RkQzNCIsImlhdCI6MTYyMTE5MTMyNSwic2NvcGUiOlsiYmFza2V0X2Z1bGwiLCJlbWFpbCIsIklkZW50aXR5U2VydmVyQXBpIiwib3BlbmlkIiwicHJvZmlsZSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.x5v26s9EHaoFUeNV67KXlsS-wJY4vPIAn6wKHiubD9sOjZ1iQf9IzlNKysMAx0uIoK_QOeolKCHRbl7LudVJNy0WBE8rpGLZwBbPfUugQZrVKzwLAuhN7zuZkOmSdyLdReHYH2aD3YJCB6c-NwYw_bYe-k2X2hR4YNF-zy2yMu4KBL2g5XS1OkBHOzlqCud4XAOReIRJoQf-OtPYtY5Vqz8L3MsefGtkHE3R9Rw-WOXme78JpmKalib31RdGCxJ-mLcJv4YJd0WBZjlfn-RtqQh0cA-Hr1eUwX55hCozSjAByE3rga_mvkgf9MhN8YN1bA5UnSeS-fLKDTvvKZekTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5013/api/Basket",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5013",
+							"path": [
+								"api",
+								"Basket"
 							]
 						}
 					},

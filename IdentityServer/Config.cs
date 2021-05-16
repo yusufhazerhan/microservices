@@ -6,6 +6,7 @@ using System;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 using IdentityServer4;
+using Microservice.Shared.Constants;
 
 namespace Microservice.IdentityServer
 {
@@ -13,8 +14,9 @@ namespace Microservice.IdentityServer
     {
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
-            new ApiResource("resource_catalog"){Scopes={"catalog_full"}},
-            new ApiResource("photo_stock_catalog"){Scopes={"photoStock_full"}},
+            new ApiResource(ApiResourceConstants.CatalogApi){Scopes={ApiResourceConstants.CatalogApiScope}},
+            new ApiResource(ApiResourceConstants.PhotoStockApi){Scopes={ApiResourceConstants.PhotoApiScope}},
+            new ApiResource(ApiResourceConstants.BasketApi){Scopes={ApiResourceConstants.BasketApiScope}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -39,8 +41,9 @@ namespace Microservice.IdentityServer
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("catalog_full","Catalog Api Tam Yetki"),
-                new ApiScope("photoStock_full","PhotoStock Api Tam Yetki"),
+                new ApiScope(ApiResourceConstants.CatalogApiScope,"Catalog Api Tam Yetki"),
+                new ApiScope(ApiResourceConstants.PhotoApiScope,"PhotoStock Api Tam Yetki"),
+                new ApiScope(ApiResourceConstants.BasketApiScope,"Basket Api Tam Yetki"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -55,7 +58,7 @@ namespace Microservice.IdentityServer
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("mysecret".Sha256()) },
 
-                    AllowedScopes = { "catalog_full", "photoStock_full", IdentityServerConstants.LocalApi.ScopeName }
+                    AllowedScopes = { ApiResourceConstants.CatalogApiScope, ApiResourceConstants.PhotoApiScope, IdentityServerConstants.LocalApi.ScopeName }
                 },
 
                 new Client
@@ -71,7 +74,8 @@ namespace Microservice.IdentityServer
                                       IdentityServerConstants.StandardScopes.Profile,
                                       IdentityServerConstants.StandardScopes.OfflineAccess, // for refresh token
                                       IdentityServerConstants.LocalApi.ScopeName,
-                                      "roles"
+                                      ApiResourceConstants.BasketApiScope,
+                                      "roles",
                     },
                     AccessTokenLifetime =1*60*60, // default
                     RefreshTokenExpiration = TokenExpiration.Absolute,

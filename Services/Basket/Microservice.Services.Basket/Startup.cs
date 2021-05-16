@@ -1,19 +1,21 @@
-using System;
-using Microservice.Services.Catalog.Services.Category;
-using Microservice.Services.Catalog.Services.Course;
-using Microservice.Services.Catalog.Settings;
-using Microservice.Shared.Constants;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using Microservice.Services.Basket.Services;
+using Microservice.Services.Basket.Settings;
+using Microservice.Shared.Constants;
+using Microservice.Shared.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
 
-namespace Microservice.Services.Catalog
+namespace Microservice.Services.Basket
 {
     public class Startup
     {
@@ -27,30 +29,37 @@ namespace Microservice.Services.Catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.Authority = Configuration["IdentityServerUrl"];
-                    options.Audience = ApiResourceConstants.CatalogApi;
-                    options.RequireHttpsMetadata = false;
-                });
 
-            services.Configure<DatabaseSettings>(Configuration.GetSection(nameof(DatabaseSettings)));
-            services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+            services.AddScoped<IBasketService, BasketService>();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<ICourseService, CourseService>();
+            services.Configure<RedisSettings>(Configuration.GetSection(nameof(RedisSettings)));
+            services.AddSingleton<RedisService>(sp =>
+            {
+                var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
+                var redis = new RedisService(redisSettings.Host, redisSettings.Port);
+                redis.Connect();
+                return redis;
+            });
 
-            services.AddAutoMapper(typeof(Startup));
+            var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+            {
+                opt.Authority = Configuration["IdentityServerUrl"];
+                opt.Audience = ApiResourceConstants.BasketApi;
+                opt.RequireHttpsMetadata = false;
+            });
+            services.AddHttpContextAccessor();
 
             services.AddControllers(opt =>
             {
-                opt.Filters.Add(new AuthorizeFilter());
+                opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
             });
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.Catalog", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Microservice.Services.Basket", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Description = "JWT Authorization header using the Bearer scheme (Example: 'Bearer 12345abcdef')",
@@ -83,10 +92,11 @@ namespace Microservice.Services.Catalog
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FreeCourse.Services.Catalog v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Microservice.Services.Basket v1"));
             }
 
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
