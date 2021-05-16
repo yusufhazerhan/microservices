@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.IdentityServer", "IdentityServer\Microservice.IdentityServer.csproj", "{A4318063-3D78-4078-A1FD-B01FBEA9539B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{B4929CB3-C5B0-46B5-AC04-0EBD1A94999F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Services.PhotoStock", "Services\PhotoStock\Microservice.Services.PhotoStock\Microservice.Services.PhotoStock.csproj", "{6815EA94-3999-4A85-ABE4-D2C91B07D4B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,10 @@ Global
 		{A4318063-3D78-4078-A1FD-B01FBEA9539B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4318063-3D78-4078-A1FD-B01FBEA9539B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4318063-3D78-4078-A1FD-B01FBEA9539B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6815EA94-3999-4A85-ABE4-D2C91B07D4B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6815EA94-3999-4A85-ABE4-D2C91B07D4B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6815EA94-3999-4A85-ABE4-D2C91B07D4B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6815EA94-3999-4A85-ABE4-D2C91B07D4B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,8 @@ Global
 		{E7F8DB48-2515-4477-A4CC-6B4D52018C94} = {C2189519-D7CE-47EF-9C00-1955FF115612}
 		{88A3D621-5581-48AF-9BB4-A4DF268277D0} = {DF3428E3-D5D9-4A22-8F9E-D90D28A55577}
 		{A4318063-3D78-4078-A1FD-B01FBEA9539B} = {9839CD54-C32B-4689-8522-CE34B9A4650F}
+		{B4929CB3-C5B0-46B5-AC04-0EBD1A94999F} = {D9688EDF-A78C-4479-B5BD-10DE88FCB736}
+		{6815EA94-3999-4A85-ABE4-D2C91B07D4B5} = {B4929CB3-C5B0-46B5-AC04-0EBD1A94999F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {019AE672-7BD8-42EA-9E1B-CE400919F986}

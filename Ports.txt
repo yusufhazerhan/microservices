@@ -1,1 +1,4 @@
 CatalogAPI:5011
+PhotoStockAPI:5012
+
+IdentityServer:5001
