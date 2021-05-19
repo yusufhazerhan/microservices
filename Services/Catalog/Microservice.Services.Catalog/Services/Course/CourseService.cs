@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microservice.Services.Catalog.Dtos.Category;
@@ -29,18 +30,18 @@ namespace Microservice.Services.Catalog.Services.Course
         {
             var course = _mapper.Map<CourseEntity>(request);
             await _courseCollection.InsertOneAsync(course);
-            return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 201);
+            return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), HttpStatusCode.Created);
         }
         public async Task<Response<NoContent>> Update(CourseUpdateDto request)
         {
             var course = _mapper.Map<CourseEntity>(request);
             var result = await _courseCollection.FindOneAndReplaceAsync(s => s.Id.Equals(course.Id), course);
-            return result == null ? Response<NoContent>.Fail("Course not found.", 404) : Response<NoContent>.Success(200);
+            return result == null ? Response<NoContent>.Fail("Course not found.", HttpStatusCode.NotFound) : Response<NoContent>.Success(HttpStatusCode.OK);
         }
         public async Task<Response<NoContent>> Delete(string id)
         {
             var result = await _courseCollection.DeleteOneAsync(s => s.Id.Equals(id));
-            return result.DeletedCount <= 0 ? Response<NoContent>.Fail("Course not found.", 404) : Response<NoContent>.Success(204);
+            return result.DeletedCount <= 0 ? Response<NoContent>.Fail("Course not found.", HttpStatusCode.NotFound) : Response<NoContent>.Success(HttpStatusCode.NoContent);
         }
         public async Task<Response<List<CourseDto>>> Get()
         {
@@ -57,7 +58,7 @@ namespace Microservice.Services.Catalog.Services.Course
                 courses = new List<CourseEntity>();
             }
 
-            return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
+            return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), HttpStatusCode.OK);
         }
         public async Task<Response<CourseDto>> Get(string id)
         {
@@ -65,11 +66,11 @@ namespace Microservice.Services.Catalog.Services.Course
 
             if (course == null)
             {
-                return Response<CourseDto>.Fail("Course not found.", 404);
+                return Response<CourseDto>.Fail("Course not found.", HttpStatusCode.NotFound);
             }
 
             course.Category = await _categoryCollection.Find(s => s.Id.Equals(course.CategoryId)).FirstAsync();
-            return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
+            return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), HttpStatusCode.OK);
         }
         public async Task<Response<List<CourseDto>>> GetByUserId(string userId)
         {
@@ -77,7 +78,7 @@ namespace Microservice.Services.Catalog.Services.Course
 
             if (courses.Count <= 0)
             {
-                return Response<List<CourseDto>>.Success(404);
+                return Response<List<CourseDto>>.Success(HttpStatusCode.NotFound);
             }
 
             if (courses.Any())
@@ -93,7 +94,7 @@ namespace Microservice.Services.Catalog.Services.Course
                 courses = new List<CourseEntity>();
             }
 
-            return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
+            return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), HttpStatusCode.OK);
         }
     }
 }

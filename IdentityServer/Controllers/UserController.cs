@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using IdentityServer4;
 using Microservice.IdentityServer.Dtos;
@@ -41,7 +42,7 @@ namespace Microservice.IdentityServer.Controllers
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
-                return BadRequest(Response<NoContent>.Fail(result.Errors.Select(x => x.Description).ToList(), 400));
+                return BadRequest(Response<NoContent>.Fail(result.Errors.Select(x => x.Description).ToList(), HttpStatusCode.BadRequest));
             }
 
             return NoContent();

@@ -12,7 +12,7 @@ namespace Microservice.Shared.BaseController
         {
             return new ObjectResult(response)
             {
-                StatusCode = response.StatusCode
+                StatusCode = (int)response.StatusCode
             };
         }
     }
