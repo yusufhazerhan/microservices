@@ -1,5 +1,6 @@
 CatalogAPI:5011
 PhotoStockAPI:5012
 BasketApi:5013
+DiscountApi:5014
 
 IdentityServer:5001

@@ -17,6 +17,7 @@ namespace Microservice.IdentityServer
             new ApiResource(ApiResourceConstants.CatalogApi){Scopes={ApiResourceConstants.CatalogApiScope}},
             new ApiResource(ApiResourceConstants.PhotoStockApi){Scopes={ApiResourceConstants.PhotoApiScope}},
             new ApiResource(ApiResourceConstants.BasketApi){Scopes={ApiResourceConstants.BasketApiScope}},
+            new ApiResource(ApiResourceConstants.DiscountApi){Scopes={ApiResourceConstants.DiscountApiScope}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -44,6 +45,7 @@ namespace Microservice.IdentityServer
                 new ApiScope(ApiResourceConstants.CatalogApiScope,"Catalog Api Tam Yetki"),
                 new ApiScope(ApiResourceConstants.PhotoApiScope,"PhotoStock Api Tam Yetki"),
                 new ApiScope(ApiResourceConstants.BasketApiScope,"Basket Api Tam Yetki"),
+                new ApiScope(ApiResourceConstants.DiscountApiScope,"Discount Api Tam Yetki"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -75,6 +77,7 @@ namespace Microservice.IdentityServer
                                       IdentityServerConstants.StandardScopes.OfflineAccess, // for refresh token
                                       IdentityServerConstants.LocalApi.ScopeName,
                                       ApiResourceConstants.BasketApiScope,
+                                      ApiResourceConstants.DiscountApiScope,
                                       "roles",
                     },
                     AccessTokenLifetime =1*60*60, // default
