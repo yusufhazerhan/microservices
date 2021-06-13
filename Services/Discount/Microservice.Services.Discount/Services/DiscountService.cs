@@ -25,12 +25,10 @@ namespace Microservice.Services.Discount.Services
 
     public class DiscountService : IDiscountService
     {
-        private readonly IConfiguration _configuration;
         private readonly IDbConnection _dbConnection;
         public DiscountService(IConfiguration configuration)
         {
-            _configuration = configuration;
-            _dbConnection = new NpgsqlConnection(_configuration.GetConnectionString("PostgreSql"));
+            _dbConnection = new NpgsqlConnection(configuration.GetConnectionString("PostgreSql"));
         }
 
         public async Task<Response<List<DiscountEntity>>> Get()
